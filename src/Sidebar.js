@@ -3,7 +3,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectUser } from './features/userSlice';
 import './Sidebar.css';
-
+import Img from './wolf.jpg';
 const Sidebar = () => {
 	const user = useSelector(selectUser);
 
@@ -16,10 +16,7 @@ const Sidebar = () => {
 	return (
 		<div className="sidebar">
 			<div className="sidebar__top">
-				<img
-					src="https:images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3jlLWZlZWR8MXx8fGVufDB8fHw%3D&w=1000&q=80"
-					alt=""
-				/>
+				<img src={Img} alt="" />
 				<Avatar src={user.photourl} className="sidebar__avatar">
 					{user.email[0]}
 				</Avatar>
