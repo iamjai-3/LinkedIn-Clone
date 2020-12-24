@@ -8,7 +8,7 @@ import Header from './Header/Header';
 import Login from './Login/Login';
 import Sidebar from './Sidebar/Sidebar';
 import Widgets from './Widgets/Widgets';
-
+import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 const App = () => {
 	const user = useSelector(selectUser);
 	const dispatch = useDispatch();
@@ -33,18 +33,25 @@ const App = () => {
 	}, []);
 
 	return (
-		<div className="app">
-			<Header />
-			{!user ? (
-				<Login />
-			) : (
-				<div className="app__body">
-					<Sidebar />
-					<Feed />
-					<Widgets />
+		<>
+			<BrowserView>
+				<div className="app">
+					<Header />
+					{!user ? (
+						<Login />
+					) : (
+						<div className="app__body">
+							<Sidebar />
+							<Feed />
+							<Widgets />
+						</div>
+					)}
 				</div>
-			)}
-		</div>
+			</BrowserView>
+			<MobileView>
+				<h1> Coming soon on mobile...! Open this link in Desktop </h1>
+			</MobileView>
+		</>
 	);
 };
 
